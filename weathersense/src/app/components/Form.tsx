@@ -1,24 +1,39 @@
+"use client";
+
+import { useRef, useState } from "react";
 import Button from "./Button";
+import Forecast from "./Forecast";
+import { WeatherData } from "@/types/weather";
 
 export default function Form() {
-  function handleSubmit(event: React.FormEvent) {
-    event.preventDefault();
-    const city = (event.target as HTMLFormElement).city.value;
-    console.log(city);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const [weatherData, setWeatherData] = useState(null);
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    const city = inputRef.current?.value;
+
+    if (inputRef.current) {
+      inputRef.current.value = "";
+    }
+
+    const res = await fetch(`/api/weather?city=${city}`);
+    const data: WeatherData = await res.json();
+    console.log("data here", data);
   }
 
   return (
     <div>
-      <form>
+      <form onSubmit={handleSubmit}>
         <fieldset>
           <legend>Search for the weather information for your city</legend>
           <label htmlFor="city">City:</label>
-          <input type="text" id="city" name="city" />
-          <Button onClick={handleSubmit} type="submit">
-            Search
-          </Button>
+          <input type="text" id="city" name="city" ref={inputRef} />
+          <Button type="submit">Search</Button>
         </fieldset>
       </form>
+      {weatherData && <Forecast />}
     </div>
   );
 }

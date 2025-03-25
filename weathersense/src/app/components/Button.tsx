@@ -1,5 +1,5 @@
 interface ButtonProps {
-  onClick: (event: React.FormEvent) => void;
+  onClick?: (event: React.FormEvent) => void;
   type: "button" | "submit" | "reset";
   children: React.ReactNode;
 }
