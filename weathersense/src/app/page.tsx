@@ -1,14 +1,17 @@
-import styles from "./page.module.css";
-
+import Header from "./components/Header";
 import Form from "./components/Form";
+import Forecast from "./components/Forecast";
+import Footer from "./components/Footer";
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <h1 className={styles.title}>Weather Sense</h1>
+    <>
+      <Header />
+      <main>
         <Form />
+        <Forecast />
       </main>
-    </div>
+      <Footer className="full-width" />
+    </>
   );
 }

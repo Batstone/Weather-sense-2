@@ -1,0 +1,45 @@
+.form {
+  margin-block-start: 10rem;
+  width: 55%;
+  margin-inline: auto;
+  background-color: #3b3c36;
+  color: #fff;
+  border-radius: 0.5em;
+  padding-inline: 2rem;
+  padding-block: 2rem;
+}
+
+.form__fieldset {
+  border: none;
+  text-align: center;
+}
+
+.form__fieldset legend {
+  width: 100%;
+  font-size: 1.2rem;
+}
+
+.form__fieldset label {
+  margin-inline-start: 0.5em;
+  font-size: 1.2rem;
+}
+
+.form_input_container {
+  margin-block-start: 1rem;
+}
+
+.form__fieldset input {
+  margin-inline-start: 0.5rem;
+  margin-block-start: 1.2rem;
+  width: 70%;
+}
+
+.form__fieldset button {
+  width: 6rem;
+  margin-block-start: 1rem;
+  font-size: 1.2rem;
+}
+
+.form__fieldset button:hover {
+  cursor: pointer;
+}

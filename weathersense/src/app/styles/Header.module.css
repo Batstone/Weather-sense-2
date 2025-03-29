@@ -1,0 +1,9 @@
+.header {
+  text-align: center;
+  margin-block-start: 5rem;
+}
+
+.header p {
+  margin-block-start: -0.8rem;
+  font-size: 1.6rem;
+}
