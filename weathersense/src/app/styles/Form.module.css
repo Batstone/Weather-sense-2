@@ -28,6 +28,11 @@
   margin-block-start: 1rem;
 }
 
+.form__error p {
+  font-size: 1.2rem;
+  position: relative;
+}
+
 .form__fieldset input {
   margin-inline-start: 0.5rem;
   margin-block-start: 1.2rem;

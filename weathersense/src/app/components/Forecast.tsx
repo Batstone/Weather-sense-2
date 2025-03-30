@@ -1,7 +1,9 @@
+import Weather from "./Weather";
+
 export default function Forecast() {
   return (
-    <div>
-      <p>This is the forecast</p>
-    </div>
+    <ul>
+      <Weather />
+    </ul>
   );
 }

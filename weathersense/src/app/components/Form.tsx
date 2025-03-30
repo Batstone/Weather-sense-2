@@ -15,12 +15,12 @@ export default function Form() {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
 
-    if (!inputRef.current?.value) {
-      console.log("EMPTY");
+    const city = inputRef.current?.value;
+
+    if (!city) {
       setError("Please enter a city name.");
       return;
     }
-    const city = inputRef.current?.value;
 
     if (inputRef.current) {
       inputRef.current.value = "";
@@ -48,7 +48,7 @@ export default function Form() {
           <div className={styles.form_input_container}>
             <div className={styles.form__error}>{error && <p aria-live="polite">{error}</p>}</div>
             <label htmlFor="city">City:</label>
-            <input required type="text" id="city" name="city" ref={inputRef} />
+            <input type="text" id="city" name="city" ref={inputRef} />
           </div>
           <Button type="submit">Search</Button>
         </fieldset>
