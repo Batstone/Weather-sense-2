@@ -2,7 +2,7 @@
   margin-block-start: 5rem;
   width: 55%;
   margin-inline: auto;
-  background-color: #3b3c36;
+  background-color: var(--color-dark);
   color: #fff;
   border-radius: 0.5em;
   padding-inline: 2rem;

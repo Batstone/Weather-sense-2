@@ -1,0 +1,22 @@
+.forecast {
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12.5rem, 1fr));
+  row-gap: 4rem;
+  column-gap: 1.5rem;
+}
+
+.forecast__day {
+  background-color: var(--color-dark);
+  color: var(--color-light);
+  padding-block: 2em;
+  padding-inline: 1em;
+  border-radius: 0.6em;
+}
+
+.forecast__img_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-block-end: 1em;
+}

@@ -1,6 +1,6 @@
 :root {
   --color-dark: #3b3c36;
-  --color-light: #fffdd0;
+  --color-light: #f8f8ff;
 }
 
 /* 1. Use a more-intuitive box-sizing model */
@@ -149,4 +149,9 @@ a {
   grid-column: full-width;
   display: grid;
   grid-template-columns: inherit;
+}
+
+html {
+  background-image: url("../../../public/assets/images/clouds-2.jpg");
+  background-position: bottom;
 }
