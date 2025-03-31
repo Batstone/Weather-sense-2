@@ -41,7 +41,7 @@
 
 .form__fieldset button {
   width: 6rem;
-  margin-block-start: 1rem;
+  margin-block-start: 1.5rem;
   font-size: 1.2rem;
 }
 
@@ -50,6 +50,6 @@
 }
 
 .form__response {
-  margin-block-start: 5rem;
+  margin-block-start: 2rem;
   text-align: center;
 }

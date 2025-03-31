@@ -16,6 +16,12 @@ export default function Form() {
   const [loading, setLoading] = useState(false);
   const [responseError, setResponseError] = useState<string | null>(null);
 
+  const [tempMeasure, setTempMeasure] = useState<string | null>(null);
+
+  function handleTempMeasureChange() {
+    console.log('Change the temp measure')
+  }
+
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
 
@@ -57,7 +63,7 @@ export default function Form() {
     <div>
       <form className={styles.form} onSubmit={handleSubmit}>
         <fieldset className={styles.form__fieldset}>
-          <legend className={styles.form__legend}>Search for the weather information for your city</legend>
+          <legend className={styles.form__legend}>Search the weather information for your city</legend>
           <div className={styles.form_input_container}>
             <div className={styles.form__error}>{error && <p aria-live="polite">{error}</p>}</div>
             <label htmlFor="city">City:</label>
@@ -68,7 +74,7 @@ export default function Form() {
       </form>
       <div className={styles.form__response}>
         {loading && <p>Checking the weather...</p>}
-        {city ? <p>{city}</p> : null}
+        {weatherData && <><h2 className={styles.location}>{weatherData.location.name} {weatherData.location.region}, {weatherData.location.country}</h2><Button type="button" onClick={handleTempMeasureChange}>test</Button></>}
         {responseError && <p>{responseError}</p>}
         {weatherData && !loading && <Forecast weatherData={weatherData} />}
       </div>

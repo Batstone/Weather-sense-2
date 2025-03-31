@@ -1,5 +1,7 @@
+
 .forecast {
-  list-style-type: none;
+  margin-block-start: 2rem;
+  list-style: none;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(12.5rem, 1fr));
   row-gap: 4rem;
@@ -14,9 +16,23 @@
   border-radius: 0.6em;
 }
 
+.forecast__week_day {
+  font-size: 1.6rem;
+}
+
+.forecast__description {
+  margin-block-start: 0.5em;
+  font-size: 1.6rem;
+}
+
 .forecast__img_container {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-block-end: 1em;
+}
+
+.forecast__temps {
+  list-style: none;
+  font-size: 1.2rem;
 }

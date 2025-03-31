@@ -154,4 +154,5 @@ a {
 html {
   background-image: url("../../../public/assets/images/clouds-2.jpg");
   background-position: bottom;
+  background-attachment: fixed;
 }
