@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { Varela_Round, Rokkitt } from "next/font/google";
+import { Rokkitt } from "next/font/google";
 import "./styles/globals.css";
 
 const rokkitt = Rokkitt({
@@ -11,7 +11,7 @@ const rokkitt = Rokkitt({
 
 export const metadata: Metadata = {
   title: "Weather Sense.",
-  description: "Find the forecast",
+  description: "Forecasts that make sense",
 };
 
 export default function RootLayout({
