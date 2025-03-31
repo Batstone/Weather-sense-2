@@ -1,5 +1,5 @@
 .form {
-  margin-block-start: 10rem;
+  margin-block-start: 5rem;
   width: 55%;
   margin-inline: auto;
   background-color: #3b3c36;
@@ -47,4 +47,9 @@
 
 .form__fieldset button:hover {
   cursor: pointer;
+}
+
+.form__response {
+  margin-block-start: 5rem;
+  text-align: center;
 }

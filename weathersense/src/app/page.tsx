@@ -9,7 +9,6 @@ export default function Home() {
       <Header />
       <main>
         <Form />
-        <Forecast />
       </main>
       <Footer className="full-width" />
     </>

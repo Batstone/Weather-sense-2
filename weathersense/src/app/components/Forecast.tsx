@@ -1,9 +1,9 @@
-import Weather from "./Weather";
+import DailyForecast from "./DailyForecast";
 
 export default function Forecast() {
   return (
     <ul>
-      <Weather />
+      <DailyForecast />
     </ul>
   );
 }

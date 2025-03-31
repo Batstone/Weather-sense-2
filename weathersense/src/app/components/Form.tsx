@@ -9,11 +9,16 @@ import styles from "@/app/styles/Form.module.css";
 
 export default function Form() {
   const inputRef = useRef<HTMLInputElement>(null);
+
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [responseError, setResponseError] = useState<string | null>(null);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+
+    setResponseError(null);
 
     const city = inputRef.current?.value;
 
@@ -24,7 +29,10 @@ export default function Form() {
 
     if (inputRef.current) {
       inputRef.current.value = "";
+      setError("");
     }
+
+    setLoading(true);
 
     try {
       const res = await fetch(`/api/weather?city=${city}`);
@@ -36,13 +44,17 @@ export default function Form() {
       console.log("data here", data);
       setWeatherData(data);
     } catch (error) {
+      setResponseError("No results found, please try searching again.");
+      setWeatherData(null);
       console.error("Error fetching weather data:", error);
+    } finally {
+      setLoading(false);
     }
   }
-
+  console.log("weatherData on render:", weatherData);
   return (
-    <div className={styles.form}>
-      <form onSubmit={handleSubmit}>
+    <div>
+      <form className={styles.form} onSubmit={handleSubmit}>
         <fieldset className={styles.form__fieldset}>
           <legend className={styles.form__legend}>Search for the weather information for your city</legend>
           <div className={styles.form_input_container}>
@@ -53,7 +65,11 @@ export default function Form() {
           <Button type="submit">Search</Button>
         </fieldset>
       </form>
-      {weatherData && <Forecast />}
+      <div className={styles.form__response}>
+        {loading && <p>Checking the weather...</p>}
+        {responseError && <p>{responseError}</p>}
+        {weatherData && !loading && <Forecast />}
+      </div>
     </div>
   );
 }
