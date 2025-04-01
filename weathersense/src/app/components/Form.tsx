@@ -6,6 +6,7 @@ import Forecast from "./Forecast";
 import { WeatherData } from "@/types/weather";
 
 import styles from "@/app/styles/Form.module.css";
+import CurrentForecast from "./CurrentForecast";
 
 export default function Form() {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -19,7 +20,7 @@ export default function Form() {
   const [tempMeasure, setTempMeasure] = useState<string | null>(null);
 
   function handleTempMeasureChange() {
-    console.log('Change the temp measure')
+    console.log("Change the temp measure");
   }
 
   async function handleSubmit(e: React.FormEvent) {
@@ -74,8 +75,18 @@ export default function Form() {
       </form>
       <div className={styles.form__response}>
         {loading && <p>Checking the weather...</p>}
-        {weatherData && <><h2 className={styles.location}>{weatherData.location.name} {weatherData.location.region}, {weatherData.location.country}</h2><Button type="button" onClick={handleTempMeasureChange}>test</Button></>}
+        {weatherData && (
+          <>
+            <h2 className={styles.location}>
+              {weatherData.location.name} {weatherData.location.region}, {weatherData.location.country}
+            </h2>
+            <Button type="button" onClick={handleTempMeasureChange}>
+              test
+            </Button>
+          </>
+        )}
         {responseError && <p>{responseError}</p>}
+        {weatherData && !loading && <CurrentForecast weatherData={weatherData} />}
         {weatherData && !loading && <Forecast weatherData={weatherData} />}
       </div>
     </div>
