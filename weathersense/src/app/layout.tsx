@@ -12,6 +12,9 @@ const rokkitt = Rokkitt({
 export const metadata: Metadata = {
   title: "Weather Sense.",
   description: "Forecasts that make sense",
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({

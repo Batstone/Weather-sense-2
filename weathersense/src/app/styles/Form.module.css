@@ -30,7 +30,6 @@
 
 .form__error p {
   font-size: 1.2rem;
-  position: relative;
 }
 
 .form__fieldset input {
@@ -52,4 +51,18 @@
 .form__response {
   margin-block-start: 2rem;
   text-align: center;
+}
+
+.form__response button {
+  position: relative;
+  left: 25%;
+  bottom: 3%;
+  background-color: var(--color-dark);
+  color: var(--color-light);
+  padding: 0.3rem;
+  border: none;
+}
+
+.form__response button:hover {
+  cursor: pointer;
 }
