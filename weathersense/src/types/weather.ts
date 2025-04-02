@@ -6,6 +6,9 @@ export interface WeatherData {
   };
   current: {
     temp_c: number;
+    temp_f: number;
+    feelslike_c: number;
+    feelslike_f: number;
     condition: {
       text: string;
       icon: string;
@@ -17,10 +20,13 @@ export interface WeatherData {
       day: {
         maxtemp_c: number;
         mintemp_c: number;
+        maxtemp_f: number;
+        mintemp_f: number;
         condition: {
           text: string;
           icon: string;
         };
+        totalprecip_mm: number;
       };
     }[];
   };

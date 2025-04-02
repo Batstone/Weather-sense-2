@@ -1,4 +1,17 @@
+.current_forecast {
+  width: 16rem;
+  margin-inline: auto;
+  margin-block-start: 2rem;
+  padding-block: 2em;
+  padding-inline: 1.2em;
+  border: 2px solid rgb(var(--color-dark));
+  border-radius: 0.6em;
+}
 
+.forecast_header {
+  font-size: 1.8rem;
+  margin-block-start: 2rem;
+}
 .forecast {
   margin-block-start: 2rem;
   list-style: none;
@@ -9,20 +22,21 @@
 }
 
 .forecast__day {
-  background-color: var(--color-dark);
-  color: var(--color-light);
+  background-color: rgba(var(--color-dark), 0.2); /* 50% transparency */
+  color: var(--color-dark);
   padding-block: 2em;
-  padding-inline: 1em;
+  padding-inline: 1.5em;
   border-radius: 0.6em;
 }
 
 .forecast__week_day {
   font-size: 1.6rem;
+  font-weight: 500;
 }
 
 .forecast__description {
   margin-block-start: 0.5em;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
 }
 
 .forecast__img_container {
@@ -33,6 +47,17 @@
 }
 
 .forecast__temps {
+  list-style: none;
+  font-size: 1.4rem;
+}
+
+.forecast__feels_like {
+  margin-block-start: 0.5rem;
+  font-size: 1.2rem;
+  line-height: 1.1em;
+}
+
+.forecast__temps_weekly {
   list-style: none;
   font-size: 1.2rem;
 }

@@ -1,12 +1,17 @@
 .form {
   margin-block-start: 5rem;
-  width: 55%;
+  width: 100%;
   margin-inline: auto;
   background-color: var(--color-dark);
   color: var(--color-light);
   border-radius: 0.5em;
-  padding-inline: 2rem;
+  padding-inline: 1rem;
   padding-block: 2rem;
+
+  @media (min-width: 48rem) {
+    width: 65%;
+    padding-inline: 3rem;
+  }
 }
 
 .form__fieldset {
@@ -34,7 +39,7 @@
 
 .form__fieldset input {
   margin-inline-start: 0.5rem;
-  margin-block-start: 1.2rem;
+  margin-block-start: 0.5rem;
   width: 70%;
 }
 
@@ -53,15 +58,18 @@
   text-align: center;
 }
 
+.form__response h2 {
+  font-size: 2rem;
+}
+
 .form__response button {
-  position: relative;
-  left: 25%;
-  bottom: 2.5%;
   background-color: var(--color-dark);
   color: var(--color-light);
   padding: 0.7rem;
+  margin-block-start: 1rem;
   border: none;
   border-radius: 0.2em;
+  font-size: 1.5rem;
 }
 
 .form__response button:hover {

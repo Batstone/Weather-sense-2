@@ -8,20 +8,13 @@ import { WeatherData } from "@/types/weather";
 import styles from "@/app/styles/Form.module.css";
 import CurrentForecast from "./CurrentForecast";
 
-export default function Form() {
+export default function Form({ handleData }: { handleData: (weatherData: WeatherData) => void }) {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const [city, setCity] = useState<string>("");
-  const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [responseError, setResponseError] = useState<string | null>(null);
-
-  const [tempMeasure, setTempMeasure] = useState<string | null>("C");
-
-  function handleTempMeasureChange() {
-    tempMeasure === "C" ? setTempMeasure("F") : setTempMeasure("C");
-  }
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -50,11 +43,13 @@ export default function Form() {
         throw new Error("Network response from component was not ok");
       }
       const data: WeatherData = await res.json();
-
-      setWeatherData(data);
+      console.log(data);
+      if (!data) {
+        throw new Error("No data found");
+      }
+      handleData(data);
     } catch (error) {
       setResponseError("No results found, please try searching again.");
-      setWeatherData(null);
     } finally {
       setLoading(false);
     }
@@ -70,27 +65,10 @@ export default function Form() {
             <label htmlFor="city">City:</label>
             <input type="text" id="city" name="city" ref={inputRef} />
           </div>
-          <Button type="submit" onClick={handleTempMeasureChange}>
-            Search
-          </Button>
+          <Button type="submit">Search</Button>
         </fieldset>
       </form>
-      <div className={styles.form__response}>
-        {loading && <p>Checking the weather...</p>}
-        {weatherData && (
-          <>
-            <h2 className={styles.location}>
-              {weatherData.location.name} {weatherData.location.region}, {weatherData.location.country}
-            </h2>
-            <Button type="button" onClick={handleTempMeasureChange}>
-              <p>&deg;{tempMeasure}</p>
-            </Button>
-          </>
-        )}
-        {responseError && <p>{responseError}</p>}
-        {weatherData && !loading && <CurrentForecast weatherData={weatherData} />}
-        {weatherData && !loading && <Forecast weatherData={weatherData} />}
-      </div>
+      {responseError && <p>{responseError}</p>}
     </div>
   );
 }

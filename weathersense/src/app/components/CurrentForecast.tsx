@@ -4,20 +4,35 @@ import Image from "next/image";
 
 import styles from "@/app/styles/Forecast.module.css";
 
-export default function CurrentForecast({ weatherData }: { weatherData: WeatherData }) {
+interface CurrentForecastProps {
+  weatherData: WeatherData;
+  tempUnit: string;
+}
+
+export default function CurrentForecast({ weatherData, tempUnit }: CurrentForecastProps) {
   const weather = weatherData.current;
   return (
-    <>
+    <div className={styles.current_forecast}>
       <div>
-        <h3 className={styles.forecast__week_day}>Current Weather</h3>
+        <h3 className={styles.forecast_header}>Current Weather</h3>
         <p className={styles.forecast__description}>{weather.condition.text}</p>
       </div>
       <div className={styles.forecast__img_container}>
         <Image src={weather.condition.icon} alt={weather.condition.text} width={50} height={50} priority unoptimized />
       </div>
-      <div className={styles.forecast__temps}>
-        <p>Max: {weather.temp_c}°C</p>
-      </div>
-    </>
+      <ul className={styles.forecast__temps}>
+        <li>
+          {weather.temp_c}
+          {tempUnit}
+        </li>
+        <li className={styles.forecast__feels_like}>
+          <p>Feels like</p>
+          <p>
+            {weather.feelslike_c}
+            {tempUnit}
+          </p>
+        </li>
+      </ul>
+    </div>
   );
 }
