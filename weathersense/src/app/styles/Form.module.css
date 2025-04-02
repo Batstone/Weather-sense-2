@@ -56,11 +56,12 @@
 .form__response button {
   position: relative;
   left: 25%;
-  bottom: 3%;
+  bottom: 2.5%;
   background-color: var(--color-dark);
   color: var(--color-light);
-  padding: 0.3rem;
+  padding: 0.7rem;
   border: none;
+  border-radius: 0.2em;
 }
 
 .form__response button:hover {

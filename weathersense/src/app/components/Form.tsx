@@ -17,10 +17,10 @@ export default function Form() {
   const [loading, setLoading] = useState(false);
   const [responseError, setResponseError] = useState<string | null>(null);
 
-  const [tempMeasure, setTempMeasure] = useState<string | null>(null);
+  const [tempMeasure, setTempMeasure] = useState<string | null>("C");
 
   function handleTempMeasureChange() {
-    console.log("Change the temp measure");
+    tempMeasure === "C" ? setTempMeasure("F") : setTempMeasure("C");
   }
 
   async function handleSubmit(e: React.FormEvent) {
@@ -70,7 +70,9 @@ export default function Form() {
             <label htmlFor="city">City:</label>
             <input type="text" id="city" name="city" ref={inputRef} />
           </div>
-          <Button type="submit">Search</Button>
+          <Button type="submit" onClick={handleTempMeasureChange}>
+            Search
+          </Button>
         </fieldset>
       </form>
       <div className={styles.form__response}>
@@ -81,7 +83,7 @@ export default function Form() {
               {weatherData.location.name} {weatherData.location.region}, {weatherData.location.country}
             </h2>
             <Button type="button" onClick={handleTempMeasureChange}>
-              test
+              <p>&deg;{tempMeasure}</p>
             </Button>
           </>
         )}
