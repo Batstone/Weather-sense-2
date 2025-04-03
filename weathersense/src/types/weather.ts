@@ -27,6 +27,7 @@ export interface WeatherData {
           icon: string;
         };
         totalprecip_mm: number;
+        daily_chance_of_rain: number;
       };
     }[];
   };

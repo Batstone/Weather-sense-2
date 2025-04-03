@@ -43,13 +43,19 @@ export default function Forecast({ weatherData, tempUnit }: ForecastProps) {
               </ul>
               <div>
                 <p>Feels like</p>
-                <p>
-                  <svg fill="#2E2EFF" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                <p>{day.day.totalprecip_mm}</p>
+              </div>
+              <div>
+                <div className={styles.forecast__precipitation}>
+                  <p>{day.day.daily_chance_of_rain}%</p>
+                </div>
+                <div className={styles.forecast__precipitation}>
+                  <svg aria-hidden="true" fill="#2E2EFF" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
                     <title>water-drop</title>
                     <path d="M25.378 19.75c1.507 6.027-3.162 11.25-9.375 11.25s-10.9-5.149-9.375-11.25c0.937-3.75 5.625-9.375 9.375-18.75 3.75 9.374 8.438 15 9.375 18.75z" />
                   </svg>
-                  {day.day.totalprecip_mm}
-                </p>
+                  <p>{day.day.totalprecip_mm}mm</p>
+                </div>
               </div>
             </li>
           );

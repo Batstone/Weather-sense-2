@@ -2,7 +2,8 @@
   margin-block-start: 5rem;
   width: 100%;
   margin-inline: auto;
-  background-color: var(--color-dark);
+  background-color: rgba(var(--color-dark), 0.2);
+  border: 2px solid var(--color-dark);
   color: var(--color-light);
   border-radius: 0.5em;
   padding-inline: 1rem;
