@@ -1,4 +1,5 @@
-import { TempUnit, WeatherData } from "@/app/types/weather";
+import { TempUnit, WeatherData, DayOfWeek } from "@/app/types/weather";
+import { DAYS_OF_WEEK } from "../constants/contsants";
 
 import Image from "next/image";
 
@@ -18,8 +19,7 @@ export default function Forecast({ weatherData, tempUnit }: ForecastProps) {
           const dateStr = day.date;
           const date = new Date(dateStr);
 
-          const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-          const dayOfWeek = daysOfWeek[date.getDay()];
+          const dayOfWeek: DayOfWeek = DAYS_OF_WEEK[date.getDay()];
 
           return (
             <li key={day.date} className={styles.forecast__day}>

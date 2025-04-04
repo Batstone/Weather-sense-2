@@ -1,3 +1,6 @@
+import { DAYS_OF_WEEK } from "../constants/contsants";
+
+export type DayOfWeek = (typeof DAYS_OF_WEEK)[number];
 export type TempUnit = "c" | "f";
 
 export interface WeatherData {

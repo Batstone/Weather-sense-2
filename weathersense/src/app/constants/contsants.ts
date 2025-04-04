@@ -11,3 +11,5 @@ export const NO_DATA_ERROR_MESSAGE = "No results found, please try searching aga
 export const WEATHER_API_URL = (city: string) => `/api/weather?city=${city}`;
 export const FORM_ARIA_LABEL = "Search to find the weather information for your city";
 export const FORM_LABEL = "Search the weather information for your city";
+
+export const DAYS_OF_WEEK = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"] as const;
