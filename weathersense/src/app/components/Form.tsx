@@ -43,7 +43,6 @@ export default function Form({ handleData }: { handleData: (weatherData: Weather
         throw new Error("Network response from component was not ok");
       }
       const data: WeatherData = await res.json();
-      console.log(data);
       if (!data) {
         throw new Error("No data found");
       }
