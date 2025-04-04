@@ -1,4 +1,4 @@
-import { WeatherData } from "@/app/types/weather";
+import { TempUnit, WeatherData } from "@/app/types/weather";
 
 import Image from "next/image";
 
@@ -6,11 +6,12 @@ import styles from "@/app/styles/Forecast.module.css";
 
 interface CurrentForecastProps {
   weatherData: WeatherData;
-  tempUnit: string;
+  tempUnit: TempUnit;
 }
 
 export default function CurrentForecast({ weatherData, tempUnit }: CurrentForecastProps) {
   const weather = weatherData.current;
+
   return (
     <div className={styles.current_forecast}>
       <div>
@@ -22,13 +23,13 @@ export default function CurrentForecast({ weatherData, tempUnit }: CurrentForeca
       </div>
       <ul className={styles.forecast__temps}>
         <li>
-          {weather.temp_c}
+          {weather[`feelslike_${tempUnit}`]}
           &deg;{tempUnit}
         </li>
         <li className={styles.forecast__feels_like}>
           <p>Feels like</p>
           <p>
-            {weather.feelslike_c}
+            {weather[`feelslike_${tempUnit}`]}
             &deg;{tempUnit}
           </p>
         </li>

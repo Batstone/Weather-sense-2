@@ -1,5 +1,4 @@
-import { WeatherData } from "@/app/types/weather";
-import { useState } from "react";
+import { TempUnit, WeatherData } from "@/app/types/weather";
 
 import Image from "next/image";
 
@@ -7,7 +6,7 @@ import styles from "@/app/styles/Forecast.module.css";
 
 interface ForecastProps {
   weatherData: WeatherData;
-  tempUnit: string;
+  tempUnit: TempUnit;
 }
 
 export default function Forecast({ weatherData, tempUnit }: ForecastProps) {
@@ -34,11 +33,11 @@ export default function Forecast({ weatherData, tempUnit }: ForecastProps) {
               </div>
               <ul className={styles.forecast__temps_weekly}>
                 <li>
-                  Max: {day.day.maxtemp_c}
+                  Max: {day.day[`maxtemp_${tempUnit}`]}
                   &deg;{tempUnit}
                 </li>
                 <li>
-                  Min: {day.day.mintemp_c}
+                  Min: {day.day[`mintemp_${tempUnit}`]}
                   &deg;{tempUnit}
                 </li>
               </ul>

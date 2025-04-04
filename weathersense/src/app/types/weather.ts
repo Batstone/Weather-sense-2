@@ -1,3 +1,5 @@
+export type TempUnit = "c" | "f";
+
 export interface WeatherData {
   location: {
     name: string;

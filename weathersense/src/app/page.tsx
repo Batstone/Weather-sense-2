@@ -4,7 +4,8 @@ import Header from "./components/Header";
 import Form from "./components/Form";
 import Footer from "./components/Footer";
 import Forecast from "./components/Forecast";
-import { WeatherData } from "@/app/types/weather";
+import { TempUnit, WeatherData } from "@/app/types/weather";
+import { CELCIUS, FAHRENHEIT, LOADING_MESSAGE } from "@/app/constants/contsants";
 import { useState } from "react";
 
 import styles from "@/app/styles/Form.module.css";
@@ -14,10 +15,10 @@ import Button from "./components/Button";
 export default function Home() {
   const [loading, setLoading] = useState(false);
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
-  const [tempUnit, setTempUnit] = useState<string>("c");
+  const [tempUnit, setTempUnit] = useState<TempUnit>(CELCIUS);
 
   function handleTempMeasureChange() {
-    tempUnit === "c" ? setTempUnit("f") : setTempUnit("c");
+    tempUnit === CELCIUS ? setTempUnit(FAHRENHEIT) : setTempUnit(CELCIUS);
   }
 
   function handleData(data: WeatherData) {
@@ -32,7 +33,7 @@ export default function Home() {
         <Form handleData={handleData} />
 
         <div className={styles.form__response}>
-          {loading && <p>Checking the weather...</p>}
+          {loading && <p>{LOADING_MESSAGE}</p>}
           {weatherData && (
             <>
               <h2>
