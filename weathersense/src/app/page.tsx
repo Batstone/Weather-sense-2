@@ -4,7 +4,7 @@ import Header from "./components/Header";
 import Form from "./components/Form";
 import Footer from "./components/Footer";
 import Forecast from "./components/Forecast";
-import { WeatherData } from "@/types/weather";
+import { WeatherData } from "@/app/types/weather";
 import { useState } from "react";
 
 import styles from "@/app/styles/Form.module.css";
@@ -39,7 +39,7 @@ export default function Home() {
                 {weatherData.location.name} {weatherData.location.region}, {weatherData.location.country}
               </h2>
               <Button type="button" onClick={handleTempMeasureChange}>
-                <p>&deg;{tempUnit}</p>
+                <p>&deg;{tempUnit.toUpperCase()}</p>
               </Button>
             </>
           )}

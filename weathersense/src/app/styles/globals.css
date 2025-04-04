@@ -2,6 +2,9 @@
   --color-dark: 59, 60, 54;
   --color-light: 248, 248, 255;
   --color-light-secondary: 215, 218, 199;
+
+  --background-dark: rgba(var(--color-dark), 0.8);
+  --background-light: rgba(var(--color-dark), 0.2);
 }
 
 /* 1. Use a more-intuitive box-sizing model */

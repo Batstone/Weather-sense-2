@@ -9,6 +9,8 @@ export interface WeatherData {
     temp_f: number;
     feelslike_c: number;
     feelslike_f: number;
+    wind_kph: number;
+    wind_dir: string;
     condition: {
       text: string;
       icon: string;
@@ -22,6 +24,7 @@ export interface WeatherData {
         mintemp_c: number;
         maxtemp_f: number;
         mintemp_f: number;
+
         condition: {
           text: string;
           icon: string;

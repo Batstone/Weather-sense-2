@@ -3,7 +3,7 @@
 import { useRef, useState } from "react";
 import Button from "./Button";
 import Forecast from "./Forecast";
-import { WeatherData } from "@/types/weather";
+import { WeatherData } from "@/app/types/weather";
 
 import styles from "@/app/styles/Form.module.css";
 import CurrentForecast from "./CurrentForecast";
@@ -57,7 +57,7 @@ export default function Form({ handleData }: { handleData: (weatherData: Weather
 
   return (
     <div>
-      <form className={styles.form} onSubmit={handleSubmit}>
+      <form className={styles.form} onSubmit={handleSubmit} aria-label="Search to find the weather information for your city">
         <fieldset className={styles.form__fieldset}>
           <legend className={styles.form__legend}>Search the weather information for your city</legend>
           <div className={styles.form_input_container}>
