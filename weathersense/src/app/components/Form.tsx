@@ -44,7 +44,8 @@ export default function Form({ handleData }: { handleData: (weatherData: Weather
         throw new Error(NO_DATA_ERROR_MESSAGE);
       }
       handleData(data);
-    } catch (error) {
+    } catch (er) {
+      console.log('error:', er);
       setResponseError(NO_DATA_ERROR_MESSAGE);
     } finally {
       setLoading(false);
@@ -85,7 +86,7 @@ export default function Form({ handleData }: { handleData: (weatherData: Weather
         <fieldset className={styles.form__fieldset}>
           <legend className={styles.form__legend}>{FORM_LABEL}</legend>
           <div className={styles.form_input_container}>
-            <div className={styles.form__error}>{error && <p aria-live="polite">{error}</p>}</div>
+            <div className={styles.form__error} aria-live="polite">{error && <p>{error}</p>}</div>
             <label htmlFor="city">City:</label>
             <input type="text" id="city" name="city" ref={inputRef} />
           </div>
@@ -94,7 +95,6 @@ export default function Form({ handleData }: { handleData: (weatherData: Weather
       </form>
       <p aria-live="polite">
         {responseError && <span>{responseError}</span>}
-        {error && <span aria-live="polite">{error}</span>}
       </p>
       {loading && <p>{loading && <span aria-live="polite">Loading...</span>}</p>}
     </div>
