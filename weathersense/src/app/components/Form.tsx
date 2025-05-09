@@ -31,8 +31,6 @@ export default function Form({ handleData }: { handleData: (weatherData: Weather
 
   async function fetchWeatherData(location: string) {
 
-console.log('serahcing for location', location)
-
     setResponseError(null);
     setLoading(true);
   
@@ -76,7 +74,6 @@ console.log('serahcing for location', location)
   useEffect(() => {
     const storedLocation = localStorage.getItem(LOCATION);
     if (storedLocation) {
-      console.log("Stored location:", storedLocation);
       inputRef.current!.value = storedLocation;
       setLocation(storedLocation);
       fetchWeatherData(storedLocation);
@@ -98,6 +95,7 @@ console.log('serahcing for location', location)
         </fieldset>
       </form>
       {responseError && <p>{responseError}</p>}
+      {error && <p>{error}</p>}
       {loading && <p>{loading && <span aria-live="polite">Loading...</span>}</p>}
     </div>
   );
