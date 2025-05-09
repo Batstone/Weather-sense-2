@@ -18,7 +18,6 @@ import styles from "@/app/styles/Form.module.css";
 export default function Form({ handleData }: { handleData: (weatherData: WeatherData) => void }) {
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const [location, setLocation] = useState<string>("");
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [responseError, setResponseError] = useState<string | null>(null);
@@ -64,7 +63,6 @@ export default function Form({ handleData }: { handleData: (weatherData: Weather
     }
 
     if (inputRef.current) {
-      setLocation(location);
       fetchWeatherData(location);
       inputRef.current.value = "";
       setError("");
@@ -75,7 +73,6 @@ export default function Form({ handleData }: { handleData: (weatherData: Weather
     const storedLocation = localStorage.getItem(LOCATION);
     if (storedLocation) {
       inputRef.current!.value = storedLocation;
-      setLocation(storedLocation);
       fetchWeatherData(storedLocation);
     } 
   }, [fetchWeatherData]);
