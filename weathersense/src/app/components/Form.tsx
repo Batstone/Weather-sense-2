@@ -44,8 +44,7 @@ export default function Form({ handleData }: { handleData: (weatherData: Weather
         throw new Error(NO_DATA_ERROR_MESSAGE);
       }
       handleData(data);
-    } catch (er) {
-      console.log('error:', er);
+    } catch {
       setResponseError(NO_DATA_ERROR_MESSAGE);
     } finally {
       setLoading(false);
