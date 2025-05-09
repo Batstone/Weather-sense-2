@@ -92,8 +92,10 @@ export default function Form({ handleData }: { handleData: (weatherData: Weather
           <Button type="submit">Search</Button>
         </fieldset>
       </form>
-      {responseError && <p>{responseError}</p>}
-      {error && <p>{error}</p>}
+      <p aria-live="polite">
+        {responseError && <span>{responseError}</span>}
+        {error && <span aria-live="polite">{error}</span>}
+      </p>
       {loading && <p>{loading && <span aria-live="polite">Loading...</span>}</p>}
     </div>
   );
