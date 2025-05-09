@@ -81,7 +81,7 @@ console.log('serahcing for location', location)
       setLocation(storedLocation);
       fetchWeatherData(storedLocation);
     } 
-  }, []);
+  }, [fetchWeatherData]);
 
 
   return (
@@ -98,6 +98,7 @@ console.log('serahcing for location', location)
         </fieldset>
       </form>
       {responseError && <p>{responseError}</p>}
+      {loading && <p>{loading && <span aria-live="polite">Loading...</span>}</p>}
     </div>
   );
 }
