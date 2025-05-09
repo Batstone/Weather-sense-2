@@ -126,7 +126,7 @@ a {
 
 .content-grid {
   --padding-inline: 2rem;
-  --content-max-size: 68rem;
+  --content-max-size: 80rem;
 
   @media (max-width: 31.25rem) {
     --padding-inline: 0.5rem;

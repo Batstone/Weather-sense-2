@@ -1,6 +1,6 @@
 export const CELCIUS = "c";
 export const FAHRENHEIT = "f";
-export const CITY = "city";
+export const LOCATION = "location";
 
 export const LOADING_MESSAGE = "Checking the weather...";
 

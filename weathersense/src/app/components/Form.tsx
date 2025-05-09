@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Button from "./Button";
 import { WeatherData } from "@/app/types/weather";
 import {
-  CITY,
+  LOCATION,
   NETWORK_ERROR_MESSAGE,
   FORM_USER_ERROR_MESSAGE,
   NO_DATA_ERROR_MESSAGE,
@@ -18,33 +18,26 @@ import styles from "@/app/styles/Form.module.css";
 export default function Form({ handleData }: { handleData: (weatherData: WeatherData) => void }) {
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const [city, setCity] = useState<string>("");
+  const [location, setLocation] = useState<string>("");
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [responseError, setResponseError] = useState<string | null>(null);
 
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
+  function saveToLocalStorage(location: string) {
+    if (location) {
+      localStorage.setItem(LOCATION, location);
+    }
+  }
+
+  async function fetchWeatherData(location: string) {
+
+console.log('serahcing for location', location)
 
     setResponseError(null);
-
-    const city = inputRef.current?.value;
-
-    if (!city) {
-      setError(FORM_USER_ERROR_MESSAGE);
-      return;
-    }
-
-    if (inputRef.current) {
-      setCity(city);
-      inputRef.current.value = "";
-      setError("");
-    }
-
     setLoading(true);
-
+  
     try {
-      const res = await fetch(WEATHER_API_URL(city));
+      const res = await fetch(WEATHER_API_URL(location));
 
       if (!res.ok) {
         throw new Error(NETWORK_ERROR_MESSAGE);
@@ -58,22 +51,38 @@ export default function Form({ handleData }: { handleData: (weatherData: Weather
       setResponseError(NO_DATA_ERROR_MESSAGE);
     } finally {
       setLoading(false);
+      saveToLocalStorage(location)
     }
   }
 
-  function saveToLocalStorage() {
-    if (city) {
-      localStorage.setItem(CITY, city);
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+
+    const location = inputRef.current?.value;
+
+    if (!location) {
+      setError(FORM_USER_ERROR_MESSAGE);
+      return;
+    }
+
+    if (inputRef.current) {
+      setLocation(location);
+      fetchWeatherData(location);
+      inputRef.current.value = "";
+      setError("");
     }
   }
 
   useEffect(() => {
-    const storedCity = localStorage.getItem(CITY);
-    if (storedCity) {
-      inputRef.current!.value = storedCity;
-      setCity(storedCity);
-    }
+    const storedLocation = localStorage.getItem(LOCATION);
+    if (storedLocation) {
+      console.log("Stored location:", storedLocation);
+      inputRef.current!.value = storedLocation;
+      setLocation(storedLocation);
+      fetchWeatherData(storedLocation);
+    } 
   }, []);
+
 
   return (
     <div>

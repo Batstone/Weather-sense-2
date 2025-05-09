@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-import { WeatherData } from "@/app/types/weather"; // Import the interface
+import { WeatherData } from "@/app/types/weather";
 
 export async function GET(request: Request) {
   const apiKey = process.env.WEATHER_API_KEY;
