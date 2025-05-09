@@ -18,7 +18,11 @@ export default function Home() {
   const [tempUnit, setTempUnit] = useState<TempUnit>(CELCIUS);
 
   function handleTempMeasureChange() {
-    tempUnit === CELCIUS ? setTempUnit(FAHRENHEIT) : setTempUnit(CELCIUS);
+    if (tempUnit === CELCIUS) {
+      setTempUnit(FAHRENHEIT);
+    } else {
+      setTempUnit(CELCIUS);
+    }
   }
 
   function handleData(data: WeatherData) {

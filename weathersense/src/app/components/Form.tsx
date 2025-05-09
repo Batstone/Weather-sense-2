@@ -63,9 +63,9 @@ export default function Form({ handleData }: { handleData: (weatherData: Weather
     }
 
     if (inputRef.current) {
-      fetchWeatherData(location);
+      fetchWeatherData(inputRef.current.value);
       inputRef.current.value = "";
-      setError("");
+      setError(null);
     }
   }
 
