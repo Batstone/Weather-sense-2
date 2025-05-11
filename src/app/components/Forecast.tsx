@@ -11,6 +11,7 @@ interface ForecastProps {
 }
 
 export default function Forecast({ weatherData, tempUnit }: ForecastProps) {
+  console.log('weatherData', weatherData);
   return (
     <>
       <h3 className={styles.forecast_header}>Weekly Forecast</h3>

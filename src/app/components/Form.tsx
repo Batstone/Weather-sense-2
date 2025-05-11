@@ -41,6 +41,8 @@ export default function Form({ handleData }: { handleData: (weatherData: Weather
         throw new Error(NETWORK_ERROR_MESSAGE);
       }
       const data: WeatherData = await res.json();
+          console.log('data', data);
+    console.log('HERE')
       if (!data) {
         throw new Error(NO_DATA_ERROR_MESSAGE);
       }

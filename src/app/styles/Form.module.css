@@ -23,6 +23,12 @@
 .form__fieldset legend {
   width: 100%;
   font-size: 1.2rem;
+
+  @media screen and (max-width: 31.25rem) {
+    width: 75%;
+    margin-inline: auto;
+    
+  }
 }
 
 .form__fieldset label {
