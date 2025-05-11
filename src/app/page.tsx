@@ -37,7 +37,6 @@ export default function Home() {
         <Form handleData={handleData} />
 
         <div className={styles.form__response}>
-          {loading && <p>{LOADING_MESSAGE}</p>}
           {weatherData && (
             <>
               <h2>

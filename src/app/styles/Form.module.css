@@ -81,3 +81,9 @@
 .form__response button:hover {
   cursor: pointer;
 }
+
+.form__live {
+  text-align: center;
+  margin-block-start: 2rem;
+  font-size: 1.5rem;
+}

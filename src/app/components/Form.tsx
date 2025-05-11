@@ -11,6 +11,7 @@ import {
   WEATHER_API_URL,
   FORM_LABEL,
   FORM_ARIA_LABEL,
+  LOADING_MESSAGE
 } from "@/app/constants/contsants";
 
 import styles from "@/app/styles/Form.module.css";
@@ -71,12 +72,11 @@ export default function Form({ handleData }: { handleData: (weatherData: Weather
   }
 
   useEffect(() => {
-    const storedLocation = localStorage.getItem(LOCATION);
-    if (storedLocation) {
-      inputRef.current!.value = storedLocation;
-      fetchWeatherData(storedLocation);
-    } 
-  }, [fetchWeatherData]);
+    const location = localStorage.getItem(LOCATION);
+    if (location) {
+      fetchWeatherData(location);
+    }
+  }, []);
 
 
   return (
@@ -92,10 +92,10 @@ export default function Form({ handleData }: { handleData: (weatherData: Weather
           <Button type="submit">Search</Button>
         </fieldset>
       </form>
-      <p aria-live="polite">
+      <div className={styles.form__live} aria-live="polite">
+        {loading && <span>{LOADING_MESSAGE}</span>}
         {responseError && <span>{responseError}</span>}
-      </p>
-      {loading && <p>{loading && <span aria-live="polite">Loading...</span>}</p>}
+      </div>
     </div>
   );
 }
