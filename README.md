@@ -1,6 +1,10 @@
 # Weather Sense ☀️🌧️❄️
 
+<h1 align="center">WeatherSense</h1>
+
 **Weather Sense** is a modern and accessible weather application built with Next.js. It displays the **current weather forecast** and the **7-day weekly forecast** for any city. Simple, fast, and intuitive — get the weather details you need at a glance.
+
+
 
 ## 🌍 Features
 
@@ -16,7 +20,7 @@
 - **Framework**: [Next.js 14](https://nextjs.org/)
 - **Language**: TypeScript
 - **Styling**: CSS Modules
-- **API**: OpenWeatherMap (or similar)
+- **API**: WeatherAPI (switching to OpenWeather soon)
 - **Deployment**: [Vercel](https://vercel.com/)
 
 ## 🚀 Getting Started
